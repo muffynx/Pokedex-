@@ -18,8 +18,6 @@
         <p><strong>Height:</strong> <span id="height"></span> meters</p>
         <p><strong>Weight:</strong> <span id="weight"></span> hectograms</p>
         <p><strong>Types:</strong> <span id="types"></span></p>
-        <p><strong>Abilities:</strong> <span id="abilities"></span></p>
-
         <h3>Stats:</h3>
         <ul>
             <li><strong>HP:</strong> <span id="hp"></span></li>
@@ -37,7 +35,7 @@
         const image = urlParams.get("image");
         const height = urlParams.get("height");
         const weight = urlParams.get("weight");
-      
+        const types = urlParams.get("types");
         const hp = urlParams.get("hp");
         const attack = urlParams.get("attack");
         const defense = urlParams.get("defense");
@@ -45,33 +43,22 @@
         const specialDefense = urlParams.get("special-defense");
         const speed = urlParams.get("speed");
 
-        const types = urlParams.get("types");
-        const abilities = urlParams.get("abilities"); 
-
         document.getElementById("name").innerText = name;
         document.getElementById("image").src = image;
         document.getElementById("height").innerText = height;
         document.getElementById("weight").innerText = weight;
+
+
+        const typesArray = types.split(', ');
+        const typesHtml = typesArray.map(type => `<a href="../types/index.html?type=${type}">${type}</a>`).join(', ');
+        document.getElementById("types").innerHTML = typesHtml;
+
         document.getElementById("hp").innerText = hp;
         document.getElementById("attack").innerText = attack;
         document.getElementById("defense").innerText = defense;
         document.getElementById("special-attack").innerText = specialAttack;
         document.getElementById("special-defense").innerText = specialDefense;
         document.getElementById("speed").innerText = speed;
-       
-       
-       
-        const typesArray = types.split(', ');
-        const typesHtml = typesArray.map(type => `<a href="../types/index.html?type=${type}">${type}</a>`).join(', ');
-        document.getElementById("types").innerHTML = typesHtml;
-
-
-        const abilitiesArray = abilities.split(', ');
-        const abilitiesHtml = abilitiesArray.map(ability => `<a href="../abilities/index.html?ability=${ability}">${ability}</a>`).join(', ');
-        document.getElementById("abilities").innerHTML = abilitiesHtml;
-
-        
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
